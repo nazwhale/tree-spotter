@@ -38,9 +38,9 @@ accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 print(sess.run(accuracy, feed_dict={x: mnist.test.images, y_: mnist.test.labels}))
 
 #get individual predictions. reduce image to pixels
-I = np.asarray(PIL.Image.open('images/its_a_zero.png'))
+I = np.asarray(PIL.Image.open('images/its_a_five.png')) #works for its_a_five!!
 print(len(I)) #need to convert I from array to dict
-print(I[0]) #why is this 4 columns? RGB values?!
+print(I[14]) #why is this 4 columns? RGB values?!
 I = I.flatten()
 print(len(I)) #why is the length 4x what it should be?! is this why it didn't
 #work properly when multiplying by weights?!
@@ -53,5 +53,5 @@ a_four = 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 prediction = tf.argmax(y,1)
 a_four = np.reshape(a_four,(1, 784))
 # print ("Prediction: %i"%prediction.eval(feed_dict={x: a_four}))
-# I = np.reshape(I,(1,784))
-print ("Prediction: %i"%prediction.eval(feed_dict={x: a_four}))
+I = np.reshape(I,(1,784))
+print ("Prediction: %i"%prediction.eval(feed_dict={x: I}))

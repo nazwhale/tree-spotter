@@ -38,7 +38,9 @@ accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 print(sess.run(accuracy, feed_dict={x: mnist.test.images, y_: mnist.test.labels}))
 
 #get individual predictions. reduce image to pixels
-I = np.asarray(PIL.Image.open('images/its_a_five.png')) #works for its_a_five!!
+I = np.asarray(PIL.Image.open('images/its_a_four.png').convert('L')) 
+#needs black on the outside
+
 print(len(I)) #need to convert I from array to dict
 print(I[14]) #why is this 4 columns? RGB values?!
 I = I.flatten()

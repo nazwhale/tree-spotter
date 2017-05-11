@@ -8,4 +8,5 @@ feature 'homepage' do
       expect(page).to have_link 'Upload photo'
     end
   end
+
 end

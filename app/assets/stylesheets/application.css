@@ -3,4 +3,13 @@ body {
     background-size: cover;
     color: white;
     font-family: 'Amatic SC', cursive;
-    font-size: 650%;}
+
+  }
+
+h1 {
+    font-size: 650%;
+}
+
+h2 {
+  font-size: 400%;
+}

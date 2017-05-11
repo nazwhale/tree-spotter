@@ -1,5 +1,5 @@
 from tensorflow.examples.tutorials.mnist import input_data
-mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
+mnist = input_data.read_data_sets("leaves_data", one_hot=True)
 
 import tensorflow as tf
 sess = tf.InteractiveSession()
@@ -68,7 +68,7 @@ correct_prediction = tf.equal(tf.argmax(y_conv, 1), tf.argmax(y_, 1))
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32), name='accuracy')
 
 sess.run(tf.global_variables_initializer())
-for i in range(10):
+for i in range(1000):
   batch = mnist.train.next_batch(50)
   if i%100 == 0:
     train_accuracy = accuracy.eval(feed_dict={
@@ -78,4 +78,3 @@ for i in range(10):
 
 print("test accuracy %g"%accuracy.eval(feed_dict={
     x: mnist.test.images, y_: mnist.test.labels, keep_prob: 1.0}))
-

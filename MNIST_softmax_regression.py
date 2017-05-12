@@ -6,6 +6,8 @@ import tensorflow as tf
 import PIL
 from PIL import Image
 
+
+
 x = tf.placeholder(tf.float32, [None, 784])
 
 #set weight and bias

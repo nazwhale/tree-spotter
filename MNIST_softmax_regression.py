@@ -5,8 +5,6 @@ import numpy as np
 import tensorflow as tf
 import PIL
 from PIL import Image
-from Naked.toolshed.shell import execute_rb
-success = execute_rb('app/models/photo.rb')
 
 x = tf.placeholder(tf.float32, [None, 784])
 
@@ -39,8 +37,20 @@ correct_prediction = tf.equal(tf.argmax(y,1), tf.argmax(y_,1))
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 print(sess.run(accuracy, feed_dict={x: mnist.test.images, y_: mnist.test.labels}))
 
+
+#get CSV
+import csv
+f = open('selected_photo.csv', 'rb')
+reader = csv.reader(f)
+for row in reader:
+    photo_path = row
+f.close()
+
+print(photo_path)
+
+
 #get individual predictions. reduce image to pixels
-I = np.asarray(PIL.Image.open(photo_path).convert('L'))
+I = np.asarray(PIL.Image.open(photo_path[0]).convert('L'))
 
 print(len(I)) #need to convert I from array to dict
 I = I.flatten()
@@ -49,3 +59,8 @@ print(len(I))
 prediction = tf.argmax(y,1)
 I = np.reshape(I,(1,784))
 print ("Prediction: %i"%prediction.eval(feed_dict={x: I}))
+
+#write to csv
+with open("NN_output.csv", "wb") as f:
+    writer = csv.writer(f)
+    writer.writerows([prediction.eval(feed_dict={x: I})])

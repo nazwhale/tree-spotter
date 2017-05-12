@@ -1,0 +1,15 @@
+body {
+    background-image: url("http://bgfons.com/upload/tree_PNG5566.png");
+    background-size: cover;
+    color: white;
+    font-family: 'Amatic SC', cursive;
+
+  }
+
+h1 {
+    font-size: 650%;
+}
+
+h2 {
+  font-size: 400%;
+}

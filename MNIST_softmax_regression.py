@@ -5,8 +5,8 @@ import numpy as np
 import tensorflow as tf
 import PIL
 from PIL import Image
-
-
+from Naked.toolshed.shell import execute_rb
+success = execute_rb('app/models/photo.rb')
 
 x = tf.placeholder(tf.float32, [None, 784])
 
@@ -40,7 +40,7 @@ accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 print(sess.run(accuracy, feed_dict={x: mnist.test.images, y_: mnist.test.labels}))
 
 #get individual predictions. reduce image to pixels
-I = np.asarray(PIL.Image.open('images/its_a_three.png').convert('L'))
+I = np.asarray(PIL.Image.open(photo_path).convert('L'))
 
 print(len(I)) #need to convert I from array to dict
 I = I.flatten()

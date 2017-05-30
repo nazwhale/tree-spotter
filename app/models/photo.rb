@@ -4,8 +4,7 @@ class Photo < ApplicationRecord
 
   require 'csv'
 
-  def send_to_csv
-    photo_path = 'images/its_a_three.png'
+  def send_to_csv(photo_path)
     CSV.open("selected_photo.csv", "wb") do |csv|
       csv << [photo_path]
     end

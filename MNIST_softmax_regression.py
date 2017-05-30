@@ -48,13 +48,11 @@ f.close()
 
 print(photo_path)
 
-
 #get individual predictions. reduce image to pixels
 I = np.asarray(PIL.Image.open(photo_path[0]).convert('L'))
 
-print(len(I)) #need to convert I from array to dict
+#need to convert I from array to dict
 I = I.flatten()
-print(len(I))
 
 prediction = tf.argmax(y,1)
 I = np.reshape(I,(1,784))
